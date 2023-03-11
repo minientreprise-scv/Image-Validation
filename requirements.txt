@@ -1,0 +1,11 @@
+numpy
+imageai
+torch
+torchvision
+keras
+keras-resnet
+pillow
+scipy
+matplotlib
+h5py
+opencv-python

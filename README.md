@@ -31,20 +31,41 @@ This will download the GPT in models/GPT-yy-mm-dd
 ```shell
 ./cli train dataset-dir/
 ```
-This will train and save a model in models/OWN-yy-mm-dd
+This will train and save a model in models/OWN-yy-mm-dd. It will uses dataset-dir/ as the dataset directory. It must follow [this architecture](#structure)
 
 3. Try with your own photos or with examples in `examples/`
 ```shell
 ./cli examples/flower.png [--model models/OWN-yy-mm-dd]
 ```
 
+### Structure
+**Dataset directory:**<br>
+```
+dataset/
+   | models/
+   | test/
+      - plant/
+         `plant-image.jpg`
+         `plant-image1.jpg`
+      - soil/
+         `seedling-image.jpg`
+         `seedling-image1.jpg`
+   | train/
+      - plant/
+         `plant-image.jpg`
+         `plant-image1.jpg`
+      - soil/
+         `seedling-image.jpg`
+         `seedling-image1.jpg`
+
+```
 
 ## Goals
--[ ] Detect plants and flowers
--[ ] Document the package
--[ ] Publish the package
--[ ] Release a GPT that is autodownload by package
--[ ] Cli to train and detect
+- [x] Detect plants and flowers
+- [ ] Document the package
+- [ ] Publish the package
+- [ ] Release a GPT that is autodownload by package
+- [ ] Cli to train and detect
 
 ## Credits
 
