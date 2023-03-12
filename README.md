@@ -34,7 +34,7 @@ pip install git+https://github.com/minientreprise-scv/is-a-plant-in-image-ai
 ```
 
 ```python
-from plantDetectionIA import ValidPlantDetector # Import the only class
+from plantImageValidation import ValidPlantDetector # Import the only class
 import cv2 # To read and check qr content
 
 # The ValidPlantDetector is looking for a QR code in the image.
@@ -57,4 +57,10 @@ if valid_image:
     print(f"Image '{image_path}' is a valid image")
     exit()
 print(f"Image '{image_path}' is not a valid image")
+```
+
+### Uninstall
+
+```shell
+pip uninstall plantImageValidation
 ```

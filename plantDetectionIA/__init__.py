@@ -1,1 +1,0 @@
-from plantDetectionIA.detect import *

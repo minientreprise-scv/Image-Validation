@@ -7,14 +7,14 @@ LONG_DESCRIPTION = f.read()
 f.close()
 
 setup(
-    name="plantDetectionIA",
+    name="plantImageValidation",
     version=VERSION,
     description=DESCRIPTION,
     long_description=LONG_DESCRIPTION,
     author="camarm",
     author_email="armand@camponovo.xyz",
     license='MIT',
-    packages=['plantDetectionIA'],
+    packages=['plantImageValidation'],
     install_requires=['opencv-python', 'numpy', 'qrdet'],
     keywords='conversion',
     classifiers=[
