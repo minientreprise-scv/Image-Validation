@@ -1,72 +1,60 @@
-# Is there a plant in this image ?
-It's the question that this python package can answer. This package can recognize if there is a plant in a photo. It also recognizes soils to be sure that the AI also detect seedling. 
+# Does this image contain a photo of a Une e-plant pot ?
+It's the question that this python package can answer. 
+This package identify if the photo is valid to be uploaded.  
 
-This repository is part of minientreprise-csv 's project. It provides a python package that say if there is a plant in a given image.
+This repository is part of minientreprise-csv 's project. It provides a python package that say if the provided image is valid and can be uploaded.
+
+## How it works
+The scrip look for a QR code in the image. In a second check it verify if this QR code is provided by Une E Plante.
+
+1. The script is looking for QR code in provided image.
+2. If a QR is found, it crop the image to see just the QR.
+3. It reads the content of the QR.
+4. It verifies if it's a valid content.
+
+## Examples
+
+![](examples/test.jpeg)
+
+```
+Invalid
+```
+
+![](examples/test2.jpeg)
+
+```
+Valid image
+```
 
 ## Documentation
 
 ### Use in your own project
 ```shell
-pip install plantDetectionIA
+pip install git+https://github.com/minientreprise-scv/is-a-plant-in-image-ai
 ```
 
-[//]: # (TODO finish doc)
+```python
+from plantDetectionIA import ValidPlantDetector # Import the only class
+import cv2 # To read and check qr content
 
-### Develop and try
-1. Setup
-   1. Clone<br>
-   ```shell
-    git clone https://github.com/minientreprise-scv/is-a-plant-in-image-ai.git
-    ```
-   2. Make cli executable
-   ```shell
-    chmod +x cli
-    ```
+# The ValidPlantDetector is looking for a QR code in the image.
+# If a QR code is found it execute the provided function (here check_qr_content).
+# This function can read and check the content of the QR code...
 
-2. Download th GPT or train your own model
-```shell
-./cli download-gpt
+def check_qr_content(image):
+    reader = cv2.QRCodeDetector()
+    value, _, _ = reader.detectAndDecode(image)
+    return value.startswith('https://server.camarm.fr')
+
+detector = ValidPlantDetector(check_qr_content)
+
+image_path = "examples/test2.jpeg"
+image = cv2.imread(image_path)
+
+valid_image = detector(image)
+
+if valid_image:
+    print(f"Image '{image_path}' is a valid image")
+    exit()
+print(f"Image '{image_path}' is not a valid image")
 ```
-This will download the GPT in models/GPT-yy-mm-dd
-```shell
-./cli train dataset-dir/
-```
-This will train and save a model in models/OWN-yy-mm-dd. It will uses dataset-dir/ as the dataset directory. It must follow [this architecture](#structure)
-
-3. Try with your own photos or with examples in `examples/`
-```shell
-./cli examples/flower.png [--model models/OWN-yy-mm-dd]
-```
-
-### Structure
-**Dataset directory:**<br>
-```
-dataset/
-   | models/
-   | test/
-      - plant/
-         `plant-image.jpg`
-         `plant-image1.jpg`
-      - soil/
-         `seedling-image.jpg`
-         `seedling-image1.jpg`
-   | train/
-      - plant/
-         `plant-image.jpg`
-         `plant-image1.jpg`
-      - soil/
-         `seedling-image.jpg`
-         `seedling-image1.jpg`
-
-```
-
-## Goals
-- [x] Detect plants and flowers
-- [ ] Document the package
-- [ ] Publish the package
-- [ ] Release a GPT that is autodownload by package
-- [ ] Cli to train and detect
-
-## Credits
-
-- This project uses `numpy`, `imageia`

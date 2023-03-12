@@ -1,2 +1,1 @@
-from plantDetectionIA.ia import *
-from plantDetectionIA.tools import *
+from plantDetectionIA.detect import *
