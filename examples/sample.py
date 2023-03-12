@@ -1,4 +1,4 @@
-from plantDetectionIA import ValidPlantDetector  # Import the only class
+from plantImageValidation import ValidPlantDetector  # Import the only class
 import cv2  # To read and check qr content
 
 # The ValidPlantDetector is looking for a QR code in the image.
