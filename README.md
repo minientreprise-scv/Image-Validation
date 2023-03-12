@@ -30,7 +30,7 @@ Valid image
 
 ### Use in your own project
 ```shell
-pip install git+https://github.com/minientreprise-scv/is-a-plant-in-image-ai
+pip install git+https://github.com/minientreprise-scv/Image-Validation
 ```
 
 ```python
