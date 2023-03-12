@@ -7,6 +7,9 @@ class ValidPlantDetector:
         self.detector = QRDetector()
         self.second_check = content_check
 
+    def set_second_check(self, fun: lambda image: True):
+        self.second_check = fun
+
     def __call__(self, image):
         detections = self.detector.detect(image=image, is_bgr=True)
         if len(detections) > 0:
